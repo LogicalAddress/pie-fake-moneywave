@@ -74,7 +74,7 @@ router.post('/v1/transfer', function (req, res, next) {
           exclude: []
         }
       }).then(function (card) {
-        if (!_.isEmpty(card)) {
+        if (card && card.id !== undefined) {
           if (card.card_is_valid) {
             charge = require("../helpers/serviceCharge")();
             return res.status(200).json({
