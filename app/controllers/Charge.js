@@ -46,7 +46,7 @@ router.post('/v1/transfer', (req, res, next) => {
               exclude: []
             }
           }).then(card => {
-            if(!_.isEmpty(card)) {
+            if(card && card.id !== undefined) {
               if(card.card_is_valid){
                 charge = require("../helpers/serviceCharge")()
                 return res.status(200).json({
