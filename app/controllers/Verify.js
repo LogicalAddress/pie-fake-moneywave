@@ -1,4 +1,4 @@
-const config = require('../../config/config.server')
+const config = require('../config/config.server')
 const router = require('express').Router()
 const models = require('../models')
 const _ = require('lodash')

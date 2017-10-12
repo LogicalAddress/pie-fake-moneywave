@@ -1,7 +1,7 @@
 import path from 'path'
 import express from 'express'
 import models  from './models'
-import serverConfig from '../config/config.server'
+import serverConfig from './config/config.server'
 import debug from 'debug'
 import controllers from './controllers'
 import logger from 'morgan'
@@ -32,7 +32,10 @@ app.all('/*', function(req, res, next) {
 
 app.use(controllers)
 
-models.sequelize.sync({force: true }).then(() => {
+models.sequelize.sync({
+  force: process.env.NODE_ENV !== 'production' ? true : false,
+  logging: process.env.NODE_ENV !== 'production' ? console.log : false
+ }).then(() => {
   app.listen(serverConfig.port)
   app.on('error', onError)
   app.on('listening', onListening)

@@ -2,21 +2,12 @@
   "name": "fake-moneywave",
   "version": "0.0.1",
   "description": "Built for Pie.ng",
-  "main": "src/index.js",
-  "scriptx": {
-    "migrate:make": "node ./node_modules/sequelize-auto-migrations/bin/makemigration",
-    "start:mysql": "mysql-ctl start",
-    "server:dev": "nodemon -e js,json --ignore ./bin/www",
-    "server:live": "NODE_ENV=production node ./bin/www",
-    "server": "npm run start:mysql && npm run server:dev"
-  },
   "scripts": {
     "lint": "eslint ./src",
-    "migrate:make": "cd app && node ../node_modules/sequelize-auto-migrations/bin/makemigration",
-    "start": "mysql-ctl start 2> /dev/null; cross-env NODE_ENV=development nodemon -e js,json --exec babel-node ./app/server.js",
-    "serve": "cross-env NODE_ENV=production babel-node ./app/server.js",
-    "seed:db": "sequelize db:seed:undo:all --url 'mysql://root:yahweh@localhost/fakemoneywave' && sequelize db:seed:all --url 'mysql://root:yahweh@localhost/fakemoneywave' --models-path './app/models'",
-    "migrate:db": "cd app && node ../node_modules/sequelize-auto-migrations/bin/runmigration",
+    "build": "babel app/ -d dist/ --copy-files",
+    "start": "node ./bin/www",
+    "dev:seed:db": "cd app && sequelize db:seed:undo:all --url 'mysql://root:yahweh@localhost/fakemoneywave' && sequelize db:seed:all --url 'mysql://root:yahweh@localhost/fakemoneywave'",
+    "seed:db": "cd dist/ && sequelize db:seed:undo:all --url $DATABASE_URL && sequelize db:seed:all --url $DATABASE_URL",
     "test": "jasmine"
   },
   "author": "Daser Retnan <dretnan@logicaladdress.com> (https://logicaladdress.com)",

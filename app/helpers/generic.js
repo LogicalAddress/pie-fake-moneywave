@@ -1,4 +1,4 @@
-const config = require('../../config/config.server')
+const config = require('../config/config.server')
 const googleLibphonenumber = require('google-libphonenumber')
 const PNF = googleLibphonenumber.PhoneNumberFormat
 const phoneUtil = googleLibphonenumber.PhoneNumberUtil.getInstance()

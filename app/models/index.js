@@ -2,7 +2,7 @@ const fs        = require('fs')
 const path      = require('path')
 const Sequelize = require('sequelize')
 const basename  = path.basename(module.filename)
-const serverConfig = require('../../config/config.server')
+const serverConfig = require('../config/config.server')
 const db        = {}
 
 let sequelize = new Sequelize(serverConfig.db.urlLive)
