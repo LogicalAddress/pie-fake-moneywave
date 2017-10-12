@@ -1,0 +1,71 @@
+{
+  "name": "fake-moneywave",
+  "version": "0.0.1",
+  "description": "Built for Pie.ng",
+  "main": "src/index.js",
+  "scriptx": {
+    "migrate:make": "node ./node_modules/sequelize-auto-migrations/bin/makemigration",
+    "start:mysql": "mysql-ctl start",
+    "server:dev": "nodemon -e js,json --ignore ./bin/www",
+    "server:live": "NODE_ENV=production node ./bin/www",
+    "server": "npm run start:mysql && npm run server:dev"
+  },
+  "scripts": {
+    "lint": "eslint ./src",
+    "migrate:make": "cd app && node ../node_modules/sequelize-auto-migrations/bin/makemigration",
+    "start": "mysql-ctl start 2> /dev/null; cross-env NODE_ENV=development nodemon -e js,json --exec babel-node ./app/server.js",
+    "serve": "cross-env NODE_ENV=production babel-node ./app/server.js",
+    "seed:db": "sequelize db:seed:undo:all --url 'mysql://root:yahweh@localhost/fakemoneywave' && sequelize db:seed:all --url 'mysql://root:yahweh@localhost/fakemoneywave' --models-path './app/models'",
+    "migrate:db": "cd app && node ../node_modules/sequelize-auto-migrations/bin/runmigration",
+    "test": "jasmine"
+  },
+  "author": "Daser Retnan <dretnan@logicaladdress.com> (https://logicaladdress.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-watch": "^2.0.7",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.1",
+    "eslint": "^4.3.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "jasmine": "^2.8.0",
+    "mysql": "^2.14.1",
+    "nodemon": "^1.11.0",
+    "promise": "^8.0.1",
+    "sequelize-auto": "^0.4.28",
+    "sequelize-auto-migrations": "^1.0.2",
+    "sequelize-cli": "^2.8.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
+    "debug": "^2.6.8",
+    "express": "^4.15.4",
+    "google-libphonenumber": "^3.0.5",
+    "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.2",
+    "mysql2": "^1.4.1",
+    "password-hash": "^1.2.2",
+    "qj": "^2.0.0",
+    "sequelize": "^4.6.0",
+    "serve-favicon": "~2.4.2",
+    "telesignsdk": "^2.0.1",
+    "unique-key": "0.0.6",
+    "unirest": "^0.5.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:LogicalAddress/fake-moneywave.git"
+  }
+}

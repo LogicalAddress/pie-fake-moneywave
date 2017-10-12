@@ -1,0 +1,12 @@
+HTTP/1.1 500 Internal Server Error
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+Access-Control-Allow-Headers: Content-type,Accept,X-Access-Token,X-Key
+Content-Security-Policy: default-src 'self'
+X-Content-Type-Options: nosniff
+Content-Type: text/html; charset=utf-8
+Content-Length: 2581
+Date: Sun, 08 Oct 2017 16:10:58 GMT
+Connection: keep-alive
+
