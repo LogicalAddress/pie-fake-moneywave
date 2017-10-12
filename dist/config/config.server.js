@@ -4,8 +4,8 @@ var configBase = require('./config.base');
 
 var config = {
   production: {
-    appUrl: 'fake-money.herokuapp.com',
-    port: process.env['PORT'] || 8080,
+    appUrl: 'localhost',
+    port: 8080,
     db: {
       urlLive: process.env['DATABASE_URL']
     },
@@ -22,7 +22,7 @@ var config = {
   },
   development: {
     appUrl: 'localhost',
-    port: process.env['PORT'] || 8080,
+    port: 8080,
     db: {
       urlLive: 'mysql://root:yahweh@localhost/fakemoneywave'
     },
@@ -39,7 +39,7 @@ var config = {
   },
   test: {
     appUrl: 'localhost',
-    port: process.env['PORT'] || 8080,
+    port: 8080,
     db: {
       urlLive: 'mysql://root:yahweh@localhost/fakemoneywave'
     },
