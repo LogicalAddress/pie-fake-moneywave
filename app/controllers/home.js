@@ -4,7 +4,7 @@ import path from 'path'
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.sendFile(path.resolve(__dirname, './../../public', 'index.html'))
+  res.sendFile(path.resolve(__dirname, './../public', 'index.html'))
 })
 
 module.exports = router

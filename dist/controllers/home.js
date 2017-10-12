@@ -15,7 +15,7 @@ var router = _express2.default.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.sendFile(_path2.default.resolve(__dirname, './../../public', 'index.html'));
+  res.sendFile(_path2.default.resolve(__dirname, './../public', 'index.html'));
 });
 
 module.exports = router;
