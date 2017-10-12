@@ -33,7 +33,7 @@ app.all('/*', function(req, res, next) {
 app.use(controllers)
 
 models.sequelize.sync({
-  force: process.env.NODE_ENV !== 'production' ? true : false,
+  force: false,
   logging: process.env.NODE_ENV !== 'production' ? console.log : false
  }).then(() => {
   app.listen(serverConfig.port)

@@ -62,7 +62,7 @@ app.all('/*', function (req, res, next) {
 app.use(_controllers2.default);
 
 _models2.default.sequelize.sync({
-  force: process.env.NODE_ENV !== 'production' ? true : false,
+  force: false,
   logging: process.env.NODE_ENV !== 'production' ? console.log : false
 }).then(function () {
   app.listen(_config2.default.port);
