@@ -38,7 +38,7 @@ router.post('/v1/transfer/charge/auth/card', function (req, res, next) {
                     "amountToCharge": 590,
                     "disburseCurrency": "NGN",
                     "chargeCurrency": "NGN",
-                    "flutterChargeResponseCode": "02",
+                    "flutterChargeResponseCode": "00",
                     "flutterChargeResponseMessage": "Pending OTP validation",
                     "flutterDisburseResponseMessage": null,
                     "flutterChargeReference": "MWV-1489523230971",
