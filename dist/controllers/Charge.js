@@ -74,12 +74,9 @@ router.post('/v1/transfer', function (req, res, next) {
           exclude: []
         }
       }).then(function (card) {
-        console.log(card);
         if (card && card.id !== undefined) {
           if (card.card_is_valid) {
             var charge = require("../helpers/serviceCharge")(amount);
-            console.log("hey");
-            console.log(charge);
             return res.status(200).json({
               "status": "success",
               "message": card.success_response,
