@@ -48,7 +48,7 @@ router.post('/v1/transfer', (req, res, next) => {
           }).then(card => {
             if(card && card.id !== undefined) {
               if(card.card_is_valid){
-                charge = require("../helpers/serviceCharge")()
+                let charge = require("../helpers/serviceCharge")(amount)
                 return res.status(200).json({
                   "status":"success",
                   "message": card.success_response,

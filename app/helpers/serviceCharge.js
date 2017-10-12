@@ -2,7 +2,7 @@ const round = (value, decimals = 0) => (
   Number(Math.round(value+'e'+decimals)+'e-'+decimals)
 )
 
-module.exports = (amount = 0) => {
+module.exports = (amount = 45) => {
   amount = parseFloat(amount)
   const mwPercentage = 0.014, mwBaseFee = 10
   let moneywaveCommission = (mwPercentage * amount) + mwBaseFee

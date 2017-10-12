@@ -6,7 +6,7 @@ var round = function round(value) {
 };
 
 module.exports = function () {
-  var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 45;
 
   amount = parseFloat(amount);
   var mwPercentage = 0.014,
