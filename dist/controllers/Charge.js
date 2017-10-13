@@ -83,10 +83,10 @@ router.post('/v1/transfer', function (req, res, next) {
             var flutterChargeReference = uniqueKey(10, 'FakeMW');
             var merchantCommission = charge.merchantCommission;
             var chargedFee = charge.chargedFee;
-            var moneywaveCommission = charge.moneywaveCommission;
+            var moneywaveCommission = charge.moneywaveCommission; //correct
             var netDebitAmount = charge.netDebitAmount;
-            var amountToSend = charge.amount;
-            var amountToCharge = charge.amount;
+            var amountToSend = charge.amount; //correct
+            var amountToCharge = charge.amount; //correct
             models.transaction.create({
               id: uniqueKey(10, 'trx'),
               firstName: firstname,

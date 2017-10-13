@@ -10,21 +10,17 @@ module.exports = function () {
   var fee = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
   amount = parseFloat(amount);
+  fee = parseFloat(fee);
   var mwPercentage = 0.014,
       mwBaseFee = 10;
-  var moneywaveCommission = mwPercentage * amount + mwBaseFee;
-
+  var moneywaveCommission = Math.floor(mwPercentage * amount + mwBaseFee);
   var merchantCommission = fee - moneywaveCommission;
-
-  // amount = round(amount)
-  // moneywaveCommission = round(moneywaveCommission)
-  // merchantCommission = round(merchantCommission)
 
   return {
     amount: amount * 100,
     moneywaveCommission: moneywaveCommission * 100,
     chargedFee: (moneywaveCommission + merchantCommission) * 100,
     merchantCommission: merchantCommission * 100,
-    netDebitAmount: (moneywaveCommission + merchantCommission + amount) * 100
+    netDebitAmount: (amount - (moneywaveCommission + merchantCommission)) * 100
   };
 };
