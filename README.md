@@ -33,7 +33,7 @@ SELECT card_no, cvv, CONCAT_WS('/', expiry_month, expiry_year) AS expiry, pin, C
 ## API
 ### Authenticate
 
-http://localhost:8080/v1/merchant/verify
+ENDPOINT /v1/merchant/verify
 
 ```sh
 curl -d 'apiKey=ts_LieLieApiKey&secret=ts_LieLieApiSecret' http://localhost:8080/v1/merchant/verify
