@@ -19,15 +19,22 @@ npm run seed:db
 SELECT card_no, cvv, CONCAT_WS('/', expiry_month, expiry_year) AS expiry, pin, CONCAT_WS('',success_response, failure_response) AS response FROM cards`;
 ```
 
-| card_no            |  cvv |  expiry | pin  | response           |
-|--------------------|------|---------|------|--------------------|
-|5555555555554444    | 100  | 11/21   | 9235 | Charge Successful  |
-|4242424242424242    | 234  | 07/20   | 1239 | Charge Successful  |
-|5105105105105100    | 455  | 07/21   | 1529 | Charge Failed      |
-|5061082001206937280 | 100  | 11/21   | 9235 | Charge Successful  |
-|5200828282828210    | 234  | 08/21   | 1240 | Charge Failed      |
-|4000000400000008    | 100  | 12/22   | 2454 | Charge Failed      |
-|4000056655665556    | 454  | 06/20   | 1529 | Charge Successful  |
+| card_no            |  cvv |  expiry | pin  | response           | OTP     |
+|--------------------|------|---------|------|--------------------|---------|
+|5555555555554444    | 100  | 11/21   | 9235 | Charge Successful  | 123456  |
+|4242424242424242    | 234  | 07/20   | 1239 | Charge Successful  | 123456  |
+|5105105105105100    | 455  | 07/21   | 1529 | Charge Failed      | 123456  |
+|5061082001206937280 | 100  | 11/21   | 9235 | Charge Successful  | 123456  |
+|5200828282828210    | 234  | 08/21   | 1240 | Charge Failed      | 123456  |
+|4000000400000008    | 100  | 12/22   | 2454 | Charge Failed      | 123456  |
+|4000056655665556    | 454  | 06/20   | 1529 | Charge Successful  | 123456  |
+
+## Test Wallets
+
+| Mobile Number      | OTP      | response           |
+|--------------------|----------|--------------------|
+|08161730129         | 123456   | Charge Successful  |
+|08181484568         | 123456   | Charge Failed      |
 
 
 ## API
