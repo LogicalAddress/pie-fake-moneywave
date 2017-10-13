@@ -64,6 +64,7 @@ router.post('/v1/transfer', function (req, res, next) {
 
     if (firstname && lastname && card_no && cvv && expiry_year && expiry_month && !sender_account_number) {
       //This is a card transactions
+      card_no = card_no.replace(/ /g, '');
       return models.card.findOne({
         where: {
           card_no: card_no,
