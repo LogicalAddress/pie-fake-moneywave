@@ -3,6 +3,7 @@ const router = require('express').Router()
 const models = require('../models')
 const _ = require('lodash')
 const decodeToken = require('../helpers/decodeToken')
+const uniqueKey = require('unique-key')
 
 /**
  * Card to Any Vault (Bank, Wallet etc)
@@ -49,6 +50,26 @@ router.post('/v1/transfer', (req, res, next) => {
             if(card && card.id !== undefined) {
               if(card.card_is_valid){
                 let charge = require("../helpers/serviceCharge")(amount)
+                const flutterChargeReference = uniqueKey(10, 'FakeMW')
+                const chargedFee = charge.moneywaveCommission + fee
+                const merchantCommission = Math.abs(fee - charge.moneywaveCommission)
+                const moneywaveCommission = charge.moneywaveCommission
+                const netDebitAmount = charge.amount + fee
+                const amountToSend = charge.amount
+                const amountToCharge = charge.amount
+                models.transaction.create({
+                  id: uniqueKey(10, 'trx'),
+                  firstName: firstname,
+                  lastName: lastname,
+                  phoneNumber: phonenumber,
+                  flutterChargeReference,
+                  chargedFee, merchantCommission,
+                  moneywaveCommission, netDebitAmount,
+                  amountToSend,amountToCharge,
+                  chargedBytoken: req.headers['authorization'] || 'invalid'
+                }).then((tranx) => {
+                  console.log(tranx)
+                })
                 return res.status(200).json({
                   "status":"success",
                   "message": card.success_response,
@@ -66,22 +87,22 @@ router.post('/v1/transfer', (req, res, next) => {
                         "medium":"web",
                         "ip":"54.196.45.207",
                         "exchangeRate":null,
-                        "amountToSend": charge.amount,
-                        "amountToCharge": charge.amount + fee + charge.moneywaveCommission,
+                        amountToSend: amountToSend / 100,
+                        amountToCharge: amountToCharge / 100,
                         "disburseCurrency":"NGN",
                         "chargeCurrency":"NGN",
                         "flutterChargeResponseCode":"02",
                         "flutterChargeResponseMessage":"Pending, Validation",
                         "flutterDisburseResponseMessage":null,
-                        "flutterChargeReference":"FLWT00530305",
+                        flutterChargeReference,
                         "flutterDisburseReference":null,
                         "flutterDisburseResponseCode":null,
-                        "merchantCommission": Math.abs(fee - (charge.amount + charge.moneywaveCommission)),
-                        "moneywaveCommission": charge.moneywaveCommission + fee - 45,
-                        "netDebitAmount": charge.amount + fee + charge.moneywaveCommission,
-                        "chargedFee":charge.moneywaveCommission + fee,
+                        merchantCommission: merchantCommission / 100,
+                        moneywaveCommission: moneywaveCommission / 100,
+                        netDebitAmount: netDebitAmount / 100,
+                        chargedFee: chargedFee / 100,
                         "receiptNumber":null,
-                        "redirectUrl":"your_redirect_url",
+                        "redirectUrl":"https://logicaladdress.com",
                         "meta":"{\"walletURef\":0,\"chargeMethod\":\"VBVSECURECODE\"}",
                         "createdAt":"2017-03-14T09:56:05.000Z",
                         "updatedAt":"2017-03-14T09:56:08.000Z",
