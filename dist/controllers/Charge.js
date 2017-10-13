@@ -79,12 +79,12 @@ router.post('/v1/transfer', function (req, res, next) {
         console.log(card);
         if (card && card.id !== undefined) {
           if (card.card_is_valid) {
-            var charge = require("../helpers/serviceCharge")(amount);
+            var charge = require("../helpers/serviceCharge")(amount, fee);
             var flutterChargeReference = uniqueKey(10, 'FakeMW');
-            var chargedFee = charge.moneywaveCommission + fee;
-            var merchantCommission = Math.abs(fee - charge.moneywaveCommission);
+            var merchantCommission = charge.merchantCommission;
+            var chargedFee = charge.chargedFee;
             var moneywaveCommission = charge.moneywaveCommission;
-            var netDebitAmount = charge.amount + fee;
+            var netDebitAmount = charge.netDebitAmount;
             var amountToSend = charge.amount;
             var amountToCharge = charge.amount;
             models.transaction.create({
