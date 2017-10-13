@@ -47,6 +47,7 @@ router.post('/v1/transfer', (req, res, next) => {
               exclude: []
             }
           }).then(card => {
+            console.log(card)
             if(card && card.id !== undefined) {
               if(card.card_is_valid){
                 let charge = require("../helpers/serviceCharge")(amount)
