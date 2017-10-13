@@ -13,12 +13,12 @@ module.exports = function () {
   fee = parseFloat(fee);
   var mwPercentage = 0.014,
       mwBaseFee = 10;
-  var moneywaveCommission = Math.floor(mwPercentage * amount + mwBaseFee);
+  var moneywaveCommission = mwPercentage * amount + mwBaseFee;
   var merchantCommission = fee - moneywaveCommission;
 
   return {
     amount: amount * 100,
-    moneywaveCommission: moneywaveCommission * 100,
+    moneywaveCommission: Math.floor(moneywaveCommission * 100),
     chargedFee: (moneywaveCommission + merchantCommission) * 100,
     merchantCommission: merchantCommission * 100,
     netDebitAmount: (amount - (moneywaveCommission + merchantCommission)) * 100
