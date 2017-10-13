@@ -4,6 +4,27 @@
 ## Dev Environment
  `npm run build && npm start`
  `npm run dev:seed:db`
+
+## Prod Env
+`npm start`
+`export DATABASE_URL=mysql://xx:xx@yy.bb/yy`
+`npm run seed:db`
+
+## Get Card
+`SELECT card_no, cvv, pin, CONCAT_WS('/', expiry_month, expiry_year) AS expiry, CONCAT_WS('',success_response, failure_response) AS response FROM cards`;
+
++---------------------+-----+--------+------+-------------------+
+| card_no             | cvv | expiry | pin  | response          |
++---------------------+-----+--------+------+-------------------+
+| 5555555555554444    | 100 | 11/21  | 9235 | Charge Successful |
+| 4242424242424242    | 234 | 07/20  | 1239 | Charge Successful |
+| 5105105105105100    | 455 | 07/21  | 1529 | Charge Failed     |
+| 5061082001206937280 | 100 | 11/21  | 9235 | Charge Successful |
+| 5200828282828210    | 234 | 08/21  | 1240 | Charge Failed     |
+| 4000000400000008    | 100 | 12/22  | 2454 | Charge Failed     |
+| 4000056655665556    | 454 | 06/20  | 1529 | Charge Successful |
++---------------------+-----+--------+------+-------------------+
+
 ## API
 ## Authenticate
 curl -d 'apiKey=ts_LieLieApiKey&secret=ts_LieLieApiSecret' localhost:8080/v1/merchant/verify
