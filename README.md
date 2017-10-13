@@ -33,7 +33,7 @@ SELECT card_no, cvv, CONCAT_WS('/', expiry_month, expiry_year) AS expiry, pin, C
 
 | Mobile Number      | OTP      | response           |
 |--------------------|----------|--------------------|
-|08161730129         | 123456   | Charge Successful  |
+|07059528155         | 123456   | Charge Successful  |
 |08181484568         | 123456   | Charge Failed      |
 
 
