@@ -58,7 +58,7 @@ router.post('/v1/transfer', (req, res, next) => {
                 const moneywaveCommission = charge.moneywaveCommission //correct
                 const netDebitAmount = charge.netDebitAmount
                 const amountToSend = charge.amount //correct
-                const amountToCharge = charge.amount //correct
+                const amountToCharge = charge.amountToCharge //correct
                 models.transaction.create({
                   id: uniqueKey(10, 'trx'),
                   firstName: firstname,
